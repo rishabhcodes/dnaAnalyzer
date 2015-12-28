@@ -72,7 +72,7 @@ public class CaesarCipher {
      *			Encrypted character
      */
     
-    public char returnEncryptedChar(char in){
+    private char returnEncryptedChar(char in){
         char out;
         int index = alphabet.indexOf(in);
         
