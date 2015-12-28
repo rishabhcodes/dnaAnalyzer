@@ -130,5 +130,40 @@ public class CaesarCipher {
         
         return str.toString();
     }
+    /**
+     * This method allows one or more files to be selected and encrypted. The encrypted files are 
+     * written back to the same folder with a prefix of "encrypt" to the file name
+     */
+    
+    public void selectFileAndEncrypt(){
+        String file_path = "";
+        String file_name = "";
+        DirectoryResource dr = new DirectoryResource();
+        for (File f: dr.selectedFiles()){
+            //Get the file name and file path of the selected file
+            file_path = f.getAbsolutePath();
+            file_name = f.getName();
+            int index = file_path.lastIndexOf(file_name);
+            file_path = file_path.substring(0,index);
+            
+            //Get the file content as a string literal 
+            FileResource fr = new FileResource(f);
+            String encryption_string = fr.asString();
+            
+            //Send the encryption string to function encryptString(encryption_string)
+            String encrypted_string = encryptString(encryption_string);
+            
+            //Create a new file at the same location with new file name prefixed with encrypted and write the encrypted contents in the new file
+            try {
+                String new_file_name = "encrypt_"+file_name;
+                FileWriter new_file = new FileWriter(file_path + new_file_name);
+                new_file.write(encrypted_string);
+                new_file.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            
+        }
+    }    
     
 }
