@@ -17,8 +17,27 @@ public class CaesarCipherTest {
 	}
 
 	@Test
-	public void test() {
+	public void test_generateEncryptionLookup() {
 		assertEquals("IJKLMNOPQRSTUVWXYZABCDEFGHijklmnopqrstuvwxyzabcdefgh", cc.get_encryption_lookup());
+	}
+	
+	@Test 
+	public void test_returnEncryptedChar(){
+		assertEquals('r',cc.returnEncryptedChar('j'));
+	}
+	
+	@Test
+	public void test_encryptString(){
+		assertEquals("IJKLM ijklm", cc.encryptString("ABCDE abcde"));
+	}
+	
+	@Test
+	public void test_interleave(){
+		assertEquals("aNcPe", CaesarCipher.interleave("abcde", "MNOPQ"));
+		assertEquals("aNcP", CaesarCipher.interleave("abcd", "MNOP"));
+		assertEquals("aNcP", CaesarCipher.interleave("abc", "MNOP"));
+		assertEquals("aNcPQRS", CaesarCipher.interleave("abc", "MNOPQRS"));
+				
 	}
 
 	@After

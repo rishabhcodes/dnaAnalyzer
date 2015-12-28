@@ -64,4 +64,71 @@ public class CaesarCipher {
         e_alphabet = e_alphabet_uppercase + e_alphabet_lowercase;
     }
     
+    /**
+     * This is a helper function. It takes in a char and looks up the corresponding character on the shifted character map
+     * @param in 
+     * 			Input character to be encrypted
+     * @return
+     *			Encrypted character
+     */
+    
+    public char returnEncryptedChar(char in){
+        char out;
+        int index = alphabet.indexOf(in);
+        
+        if (index != -1){
+            out = e_alphabet.charAt(index);
+        }else {
+            out = in;
+        }
+        
+        return out;
+    }
+    /**
+     * This function takes a string and returns the encrypted string
+     * @param e
+     * 			Input string to be encrypted
+     * @return
+     * 			Returns the encrypted String
+     */
+    
+    public String encryptString(String e){
+        StringBuilder str = new StringBuilder(1000);
+        for (int i=0;i<e.length(); i++){
+            char in = e.charAt(i);
+            str.append(returnEncryptedChar(in));
+        }
+        return str.toString();
+    }
+    /**
+     * Static method take two strings as inputs and interleaves them
+     * @param a
+     * 			String 1 for interleaving
+     * @param b
+     * 			String 2 for interleaving
+     * @return
+     * 			Interleaved String
+     */
+    
+    public static String interleave(String a, String b){
+        StringBuilder str = new StringBuilder(1000);
+            int len = Math.max(a.length(),b.length());
+            
+            for (int i=0; i< len; i++){
+                if (i < a.length() && i < b.length()){
+                    if ((i%2)== 0){
+                        str.append(a.charAt(i));
+                    } else {
+                        str.append(b.charAt(i)); 
+                    }
+                }else if (i < a.length() && i >= b.length()){
+                    str.append(a.charAt(i));
+                }else if (i >= a.length() && i < b.length()){
+                    str.append(b.charAt(i)); 
+                }
+            }
+        
+        return str.toString();
+    }
+    
 }
