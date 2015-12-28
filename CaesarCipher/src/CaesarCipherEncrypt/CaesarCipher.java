@@ -100,6 +100,21 @@ public class CaesarCipher {
         }
         return str.toString();
     }
+    
+    /**
+     * This function takes a string and returns the original text through decryption
+     * @param e
+     * 			Input string to be Decrypted 
+     * @return
+     * 			Returns the original decrypted text
+     */    
+    
+    public String decryptString(String e){
+    	CaesarCipher cc = new CaesarCipher(26-encrypt_key);
+    	String decryptedString = cc.encryptString(e);
+    	return decryptedString;
+    			
+    }
     /**
      * Static method take two strings as inputs and interleaves them
      * @param a
@@ -164,6 +179,8 @@ public class CaesarCipher {
             }
             
         }
-    }    
+    }
+    
+   
     
 }
