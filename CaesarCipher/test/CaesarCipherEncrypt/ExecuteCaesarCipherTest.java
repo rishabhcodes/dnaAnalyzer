@@ -14,15 +14,7 @@ public class ExecuteCaesarCipherTest {
 		ce = new ExecuteCaesarCipher("me the tumee keep your tumee");
 	}
 
-	@Test
-	public void test_char_frequency() {
-		assertArrayEquals(new int[] {0,0,0,0,8,0,0,1,0,0,1,0,3,0,1,1,0,1,0,3,3,0,0,0,1,0}, ce.get_char_freq());
-	}
-	
-	@Test
-	public void test_get_max_char_freq(){
-		assertEquals(4, ce.get_max_char_freq());
-	}
+
 	
 	@Test
 	public void test_simple_test(){
