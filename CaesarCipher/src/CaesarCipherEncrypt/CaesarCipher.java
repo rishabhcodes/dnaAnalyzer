@@ -161,6 +161,7 @@ public class CaesarCipher {
     public String decryptString(int mode){
     	
     	int key = -1;
+    	int current_key = this.get_key();
     	
     	if (mode == 1){
     		key = 26 - encrypt_key;
@@ -171,9 +172,10 @@ public class CaesarCipher {
     		
     	}
     	
-    	this.set_key(key);
+    	this.set_key(key); //this statement internally mutates the key which is not a good idea
     	
     	String decryptedString = this.encryptString();
+    	this.set_key(current_key); //this statement reverts the state of the Caesar Cipher
     	return decryptedString;
     			
     }
@@ -280,43 +282,5 @@ public class CaesarCipher {
 	   return shift_complement;
    }
    
-    /**
-     * This method allows one or more files to be selected and encrypted. The encrypted files are 
-     * written back to the same folder with a prefix of "encrypt" to the file name
-     */
-    
-    public void selectFileAndEncrypt(){
-        String file_path = "";
-        String file_name = "";
-        DirectoryResource dr = new DirectoryResource();
-        for (File f: dr.selectedFiles()){
-            //Get the file name and file path of the selected file
-            file_path = f.getAbsolutePath();
-            file_name = f.getName();
-            int index = file_path.lastIndexOf(file_name);
-            file_path = file_path.substring(0,index);
-            
-            //Get the file content as a string literal 
-            FileResource fr = new FileResource(f);
-            String encryption_string = fr.asString();
-            
-            //Send the encryption string to function encryptString(encryption_string)
-            this.set_string_under_action(encryption_string);
-            String encrypted_string = this.encryptString();
-            
-            //Create a new file at the same location with new file name prefixed with encrypted and write the encrypted contents in the new file
-            try {
-                String new_file_name = "encrypt_"+file_name;
-                FileWriter new_file = new FileWriter(file_path + new_file_name);
-                new_file.write(encrypted_string);
-                new_file.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            
-        }
-    }
-    
-   
-    
+
 }
