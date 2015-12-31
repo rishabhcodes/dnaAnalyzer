@@ -14,6 +14,15 @@ public class CaesarCipherTwo {
 	private CaesarCipher cc1;
 	private CaesarCipher cc2;
 	
+	/**
+	 * Constructor - Takes in the two keys used for encryption
+	 * 
+	 * @param key1
+	 * 				Key1 used in encryption process
+	 * @param key2
+	 * 				Key2 used in encryption process
+	 */
+	
 	public CaesarCipherTwo(int key1, int key2){
 		this.key1 = key1;
 		this.key2 = key2;
@@ -23,6 +32,14 @@ public class CaesarCipherTwo {
 		cc2.set_key(key2);
 		
 	}
+	
+	/**
+	 * Takes a String as input and encrypts it using 2 keys
+	 * @param s 
+	 * 			Input String
+	 * @return
+	 * 			Encrypted String
+	 */
 
 	public String encrypt(String s){
 		cc1.set_string_under_action(s);
@@ -34,6 +51,19 @@ public class CaesarCipherTwo {
 	
 	}
 	
+	/**
+	 * Takes a String and decrypts it using 2 keys
+	 * @param s
+	 * 			String input for decryption
+	 * @param mode
+	 * 			Accepts either 1 or 2 as input
+	 * 			Mode 1 - Use the complement of key used for encryption while doing decryption. Its critical that this mode be used with the same
+	 * 					 key settings as used while encrypting the String
+	 * 			Mode 2 - The method figures out the right decryption key to be used	
+	 * @return
+	 * 			Decrypted String
+	 */
+	
 	public String decrypt(String s, int mode){
 		
 	    String [] decrypt = CaesarCipherTwo.halfOfString(s);
@@ -44,6 +74,14 @@ public class CaesarCipherTwo {
 		String d = CaesarCipherTwo.weaveTwoStrings(d1, d2);
 		return d;	
 	}
+	
+	/**
+	 * Break a string into 2 (alternate chars in each of the 2 resultant strings)
+	 * @param s 
+	 * 			Input String
+	 * @return
+	 * 			Returns an array of 2 strings. These are the resultant strings from breaking the input string
+	 */
 	
 	public static String[] halfOfString(String s){
         StringBuilder sb1 = new StringBuilder(1000);
@@ -62,6 +100,16 @@ public class CaesarCipherTwo {
         decrypt[1] = sb2.toString();
         return decrypt;
 	}
+	
+	/**
+	 * This method weaves 2 strings together into a single string. Letters from each of the input strings form alternate letters in final string
+	 * @param s1
+	 * 			First input String
+	 * @param s2
+	 * 			Second input String
+	 * @return
+	 * 			Final resultant String
+	 */
 	
     public static String weaveTwoStrings(String s1,String s2){
         int len = Math.max(s1.length(), s2.length());
