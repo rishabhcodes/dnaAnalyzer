@@ -139,7 +139,7 @@ public class CaesarCipher {
      */
     
     public String encryptString(){
-        StringBuilder str = new StringBuilder(1000);
+        StringBuilder str = new StringBuilder(10000);
         for (int i=0;i<string_under_action.length(); i++){
             char in = string_under_action.charAt(i);
             str.append(returnEncryptedChar(in));
@@ -190,7 +190,7 @@ public class CaesarCipher {
      */
     
     public static String interleave(String a, String b){
-        StringBuilder str = new StringBuilder(1000);
+        StringBuilder str = new StringBuilder(10000);
             int len = Math.max(a.length(),b.length());
             
             for (int i=0; i< len; i++){

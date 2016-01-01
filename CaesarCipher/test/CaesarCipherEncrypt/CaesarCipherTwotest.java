@@ -27,10 +27,27 @@ public class CaesarCipherTwotest {
 	
 	
 	@Test
-	public void test_decrypt(){
+	public void test_decrypt1(){
 		assertEquals("brown", cct.decrypt("ctpyo",1));
-		assertEquals("me the tumee you the tummee", cct.decrypt("ng vig vvofg apw vig vvongf", 2));
+//		assertEquals("me the tumee you the tummee", cct.decrypt("ng vig vvofg apw vig vvongf", 2));
+//		assertEquals("", cct.decrypt("Akag tjw Xibhr awoa aoee xakex znxag xwko", 2));
 	}
+	
+	@Test
+	public void test_decrypt2(){
+//		assertEquals("brown", cct.decrypt("ctpyo",1));
+		assertEquals("me the tumee you the tummee", cct.decrypt("ng vig vvofg apw vig vvongf", 2));
+//		assertEquals("", cct.decrypt("Akag tjw Xibhr awoa aoee xakex znxag xwko", 2));
+	}	
+	
+	@Test
+	public void test_decrypt3(){
+//		assertEquals("brown", cct.decrypt("ctpyo",1));
+//		assertEquals("me the tumee you the tummee", cct.decrypt("ng vig vvofg apw vig vvongf", 2));
+		assertEquals("Eren and Emily have evil eerie green ears", cct.decrypt("Akag tjw Xibhr awoa aoee xakex znxag xwko", 2));
+	}	
+	
+	
 
 	@Test
 	public void test_halfOfString(){

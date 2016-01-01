@@ -15,7 +15,8 @@ public class CaesarCipherTwo {
 	private CaesarCipher cc2;
 	
 	/**
-	 * Constructor - Takes in the two keys used for encryption
+	 * Constructor - Takes in the two keys used for encryption. Use this constructor when you want to use this object for encryption (& then subsequent 
+	 * decryption of same string)
 	 * 
 	 * @param key1
 	 * 				Key1 used in encryption process
@@ -31,6 +32,14 @@ public class CaesarCipherTwo {
 		cc2 = new CaesarCipher();
 		cc2.set_key(key2);
 		
+	}
+	
+	/**
+	 * Constructor - To be used when you want to use this class for decryption & the method needs to figure out the decryption keys
+	 */
+	public CaesarCipherTwo(){
+		cc1 = new CaesarCipher();
+		cc2 = new CaesarCipher();
 	}
 	
 	/**
@@ -84,8 +93,8 @@ public class CaesarCipherTwo {
 	 */
 	
 	public static String[] halfOfString(String s){
-        StringBuilder sb1 = new StringBuilder(1000);
-        StringBuilder sb2 = new StringBuilder(1000);
+        StringBuilder sb1 = new StringBuilder(10000);
+        StringBuilder sb2 = new StringBuilder(10000);
         String [] decrypt = new String[2];
         
         for (int i = 0; i<s.length();i++){
@@ -113,7 +122,7 @@ public class CaesarCipherTwo {
 	
     public static String weaveTwoStrings(String s1,String s2){
         int len = Math.max(s1.length(), s2.length());
-        StringBuilder sb = new StringBuilder(1000);
+        StringBuilder sb = new StringBuilder(10000);
         
             for (int i=0; i< len; i++){
                 if (i < s1.length() && i < s2.length()){
