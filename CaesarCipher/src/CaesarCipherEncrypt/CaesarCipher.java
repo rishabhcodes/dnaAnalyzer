@@ -172,6 +172,8 @@ public class CaesarCipher {
     		
     	}
     	
+
+    	
     	this.set_key(key); //this statement internally mutates the key which is not a good idea
     	
     	String decryptedString = this.encryptString();
@@ -278,6 +280,8 @@ public class CaesarCipher {
 		   shift = 26 + (n - 4); 
 	   }
 	   
+   	   System.out.println("The encryption key discovered is "+shift);	
+   	   
 	   shift_complement = 26 - shift;
 	   return shift_complement;
    }

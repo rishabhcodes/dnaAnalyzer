@@ -49,6 +49,8 @@ public class ExecuteCaesarCipherTwo {
 			cc.simpleTestFour();
 		} else if (mode == 5){
 			cc.simpleTestFive();
+		} else if (mode == 6){
+			cc.simpleTestSix();
 		}
     }
 	
@@ -236,5 +238,48 @@ public class ExecuteCaesarCipherTwo {
             
         }
     }
+    
+    /**
+     * This method allows a user to feed in an input string and 2 keys to enable encryption of the String
+     */
+    
+    public void simpleTestSix(){
+    	
+       
+        //Create the scanner object
+        Scanner in = new Scanner(System.in);
+        
+        //Ask user for the String to be decrypted
+        System.out.println("Please enter the String you wish to decrypt ");
+        String s = in.nextLine();
+        System.out.println();
+        
+        in.nextLine();
+        
+        System.out.println("Please enter the first key ");
+        int key1 = in.nextInt();
+        System.out.println();
+        
+        in.nextLine();
+        
+        System.out.println("Please enter the second key ");
+        int key2 = in.nextInt();
+        System.out.println();
+        
+        in.nextLine();  
+        
+        //Create a new CaesarCipherTwo object
+        CaesarCipherTwo cipher = new CaesarCipherTwo(key1,key2);
+        
+            
+        //Get the encrypted String
+        String decrypted_string = cipher.decrypt(s,1);
+              
+        //Print the encrypted String
+        System.out.println("The encrypted string is "+s);
+        System.out.println("The decrypted string is "+decrypted_string);
+
+    	
+    }    
     
 }
